@@ -1,0 +1,65 @@
+{
+  "name": "LEVIR-train-IPNet-Baseline",
+  "phase": "train",
+  "gpu_ids": [2],
+
+  "path_cd": {
+    "log": "logs",
+    "result": "results",
+    "checkpoint": "checkpoint",
+    "resume_state": null
+  },
+
+  "datasets": {
+    "train": {
+      "name": "LEVIR-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/LEVIR-CD256",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 6,
+      "use_shuffle": true,
+      "data_len": -1
+    },
+    "val": {
+      "name": "LEVIR-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/LEVIR-CD256",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 6,
+      "use_shuffle": true,
+      "data_len": -1
+    },
+
+    "test": {
+      "name": "LEVIR-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/LEVIR-CD256",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 6,
+      "use_shuffle": false,
+      "data_len": -1
+    }
+  },
+
+  "model" : {
+    "name" : "HWNet",
+    "mode" : "baseline",
+    "loss" : "ce_dice"
+  },
+
+  "train" : {
+    "n_epoch" : 60,
+    "train_print_iter" : 500,
+    "val_freq" : 1,
+    "val_print_iter" : 50,
+    "optimizer" :{
+      "type" : "adam",
+      "lr" : 1e-5
+    },
+    "sheduler" : {
+      "lr_policy" : "linear",
+      "n_step" : 3,
+      "gamma" : 0.1
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "WHU-test-IPNet-Baseline",
+  "phase": "test",
+  "gpu_ids":[0],
+
+  "path_cd": {
+    "log": "logs",
+    "result": "results",
+    "checkpoint": "checkpoint",
+    "resume_state": "/home-nv1/2024xlh/CDProject/experiments/WHU-train-IPNet-Baseline_250916_093726/checkpoint/best_cd_model"
+  },
+
+  "datasets": {
+    "train": {
+      "name": "WHU-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/WHU-CD-256/",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 1,
+      "use_shuffle": true,
+      "data_len": -1
+    },
+    "val": {
+      "name": "WHU-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/WHU-CD-256/",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 1,
+      "use_shuffle": true,
+      "data_len": -1
+    },
+
+    "test": {
+      "name": "WHU-CD-256",
+      "datasetroot": "/home/207lab/change_detection_datasets/WHU-CD-256/",
+      "resolution": 256,
+      "num_workers": 2,
+      "batch_size": 1,
+      "use_shuffle": false,
+      "data_len": -1
+    }
+  },
+
+"model" : {
+    "name" : "HWNet",
+    "loss" : "ce_dice",
+    "mode" : "baseline"
+  },
+
+  "train" : {
+    "n_epoch" : 100,
+    "train_print_iter" : 500,
+    "val_freq" : 1,
+    "val_print_iter" : 50,
+    "optimizer" :{
+      "type" : "adam",
+      "lr" : 1e-4
+    },
+    "sheduler" : {
+      "lr_policy" : "linear",
+      "n_step" : 3,
+      "gamma" : 0.1
+    }
+  }
+}
