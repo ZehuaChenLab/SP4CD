@@ -1,5 +1,5 @@
 # SP4CD
-The code will be available soon.  
+SP4CD: A Hierarchical Stripe Patch-Based Method for Change Detection in Remote Sensing Images 
 
 ## Overview
 ![image](https://github.com/ZehuaChenLab/SP4CD/blob/main/images/images/overview.png)
